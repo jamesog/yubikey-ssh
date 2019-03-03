@@ -67,3 +67,18 @@ ssh -I /usr/local/lib/opensc-pkcs11.so -i /usr/local/lib/opensc-pkcs11.so -o Ide
 ```
 
 You should be prompted for your Yubikey's PIV PIN.
+
+You can add the PKCS11 library to `ssh-agent`, however it has a default list of whitelisted paths for shared libraries. Homebrew symlinks the library to `/usr/local/lib/opensc-pkcs11.so` but the destination is outside of the whitelist, e.g.
+
+```
+$ ls -l /usr/local/lib/opensc-pkcs11.so
+lrwxr-xr-x  1 jamesog  admin  44  3 Mar 20:51 /usr/local/lib/opensc-pkcs11.so -> ../Cellar/opensc/0.19.0/lib/opensc-pkcs11.so
+```
+
+The workaround is to remove the symlink and copy or hardlink library. Then you can add it to the agent.
+
+```
+ssh-add -s /usr/local/lib/opensc-pkcs11.so
+```
+
+Once more you will be prompted for your PIN, and from there SSH authentication will happen as usual.
