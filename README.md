@@ -12,25 +12,35 @@ I did this all on macOS 10.14. Linux distributions should work in a similar way.
 
 1. Install OpenSC
 
-    brew install opensc
+```
+brew install opensc
+```
 
 2. Install Yubikey manager (CLI only)
 
-    brew install ykman
+```
+brew install ykman
+```
 
 3. Ensure CCID mode is enabled on the Yubikey
 
-    ykman mode
+```
+ykman mode
+```
 
 If CCID is not in the list, enable it by adding CCID to the list, e.g.
 
-    ykman mode OTP+FIDO+CCID
+```
+ykman mode OTP+FIDO+CCID
+```
 
 (This assumes you had OTP+FIDO previously, and still want them enabled.)
 
 4. Generate a PIV key and output the public key
 
-    ykman piv generate-key 9a pubkey.pem
+```
+ykman piv generate-key 9a pubkey.pem
+```
 
 This is an RSA 2048-bit key by default. Depending which Yubikey you have, you can change it using `-a` / `--algorithm`.
 
@@ -38,16 +48,22 @@ This is an RSA 2048-bit key by default. Depending which Yubikey you have, you ca
 
 5. Generate a self-signed X.509 certificate
 
-    ykman piv generate-certificate -s "SSH key" 9a pubkey.pem
+```
+ykman piv generate-certificate -s "SSH key" 9a pubkey.pem
+```
 
 6. Export your SSH public key from the Yubikey
 
-    ssh-keygen -D /usr/local/lib/opensc-pkcs11.so
+```
+ssh-keygen -D /usr/local/lib/opensc-pkcs11.so
+```
 
 And that's all the hard stuff done. 
 
 Now just add the public key to your `authorized_keys` file on a remote host and try to use it:
 
-    ssh -I /usr/local/lib/opensc-pkcs11.so -i /usr/local/lib/opensc-pkcs11.so -o IdentitiesOnly=yes server.example.com
+```
+ssh -I /usr/local/lib/opensc-pkcs11.so -i /usr/local/lib/opensc-pkcs11.so -o IdentitiesOnly=yes server.example.com
+```
 
 You should be prompted for your Yubikey's PIV PIN.
