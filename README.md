@@ -61,6 +61,12 @@ ykman mode OTP+FIDO+CCID
 ykman piv generate-key 9a pubkey.pem
 ```
 
+Alternatively, you can require that you have to touch the Yubikey every time the slot is accessed:
+
+```
+ykman piv generate-key --touch-policy always 9a pubkey.pem
+```
+
 This is an RSA 2048-bit key by default. Depending which Yubikey you have, you can change it using `-a` / `--algorithm`.
 
 (9a is the PIV authentication slot.)
