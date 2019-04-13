@@ -100,3 +100,11 @@ ssh-add -s /usr/local/lib/opensc-pkcs11.so
 ```
 
 Once more you will be prompted for your PIN, and from there SSH authentication will happen as usual.
+
+To configure `ssh` to use the Yubikey's SSH key, use the `PKCS11Provider` config option instead of `IdentityFile`, e.g.:
+
+```
+Host foo
+  PKCS11Provider /usr/local/lib/opensc-pkcs11.so
+  IdentitiesOnly yes
+````
