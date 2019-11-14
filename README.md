@@ -8,29 +8,25 @@ OpenSSH has supported OpenSC since version 5.4. This means that all you need to 
 
 ## Prequisites
 
-1. Install OpenSC
+### 1. Install OpenSC and YubiKey Manager (CLI only)
 
+#### On macOS
 Ensure you install the cask version of OpenSC, not the formula. The cask version is a .pkg which will install the shared library to a location acceptable by `ssh-agent`. The formula does not, as Homebrew installs each version into its own location and it won't allow an unknown path to be used as a PKCS#11 library.
 
-```
-# on macOS
+```sh
 brew cask install opensc
-# on Ubuntu/Debian
-apt install opensc
+brew install ykman   
 ```
 
-2. Install Yubikey manager (CLI only)
-
+#### On Ubuntu/Debian
 ```
-# on macOS
-brew install ykman
-# on Ubuntu/Debian
-apt-add-repository ppa:yubico/stable
-apt update
-apt install yubikey-manager
+sudo apt-add-repository ppa:yubico/stable
+sudo apt update
+sudo apt install opensc
+sudo apt install yubikey-manager
 ```
 
-If this is a new Yubikey, change the default PIV management key, PIN and PUK.
+### 2. If this is a new Yubikey, change the default PIV management key, PIN and PUK.
 
 The `ykman` tool can generate a new management key for you. For the PIN and PUK you'll need to provide your own values (6-8 digits).
 
