@@ -112,3 +112,9 @@ Host foo
   PKCS11Provider /usr/local/lib/opensc-pkcs11.so
   IdentitiesOnly yes
 ````
+
+## Additional notes
+
+- When SSHing, you may get prompted with the key's subject name, like `Enter PIN for 'SSH key':`. But if you add the key to the agent, you'll get a prompt like `Enter passphrase for PKCS#11:`. These are the same PIN (your PIV PIN).
+
+- If you remove the key from ssh-agent for some reason, you'll have to restart the agent. You can do this with `launchctl stop com.openssh.ssh-agent` followed by `launchctl start com.openssh.ssh-agent`
