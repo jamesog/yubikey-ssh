@@ -33,7 +33,7 @@ The `ykman` tool can generate a new management key for you. For the PIN and PUK 
 ```
 ykman piv change-management-key --touch --generate
 ykman piv change-pin -P 123456
-ykman piv change-puk -P 12345678
+ykman piv change-puk -p 12345678
 ```
 
 Make sure you save the generated password somewhere secure such as a password manager. The management key is needed any time you generate a keypair or import a certificate.
