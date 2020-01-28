@@ -22,8 +22,7 @@ brew install ykman
 ```
 sudo apt-add-repository ppa:yubico/stable
 sudo apt update
-sudo apt install opensc
-sudo apt install yubikey-manager
+sudo apt install opensc yubikey-manager
 ```
 
 ### 2. If this is a new Yubikey, change the default PIV management key, PIN and PUK.
