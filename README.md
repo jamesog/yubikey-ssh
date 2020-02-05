@@ -35,7 +35,7 @@ ykman piv change-pin -P 123456
 ykman piv change-puk -p 12345678
 ```
 
-Make sure you save the generated password somewhere secure such as a password manager. The management key is needed any time you generate a keypair or import a certificate.
+Make sure you save the generated password somewhere secure such as a password manager. The management key is needed any time you generate a keypair, import a certificate or change the number of PIN or PUK retries
 
 The PUK should also be kept somewhere safe. This is used if the PIN is entered incorrectly too many times.
 
