@@ -1,5 +1,7 @@
 # Yubikey as an SSH key
 
+**As of 2020-05-09 [Filippo Valsorda](https://filippo.io/) has released [yubikey-agent](https://github.com/FiloSottile/yubikey-agent). I am now recommending this method over using PKCS#11, however if you still wish to use the native ssh-agent, read on.**
+
 All other guides I've seen (https://github.com/drduh/YubiKey-Guide being the most prolific) tell you to use the Yubikey's smartcard (PKCS#11) features with GnuPG via gpg-agent.
 
 STOP THE MADNESS!
