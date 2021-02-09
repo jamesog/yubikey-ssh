@@ -16,7 +16,7 @@ OpenSSH has supported OpenSC since version 5.4. This means that all you need to 
 Ensure you install the cask version of OpenSC, not the formula. The cask version is a .pkg which will install the shared library to a location acceptable by `ssh-agent`. The formula does not, as Homebrew installs each version into its own location and it won't allow an unknown path to be used as a PKCS#11 library.
 
 ```sh
-brew cask install opensc
+brew install --cask opensc
 brew install ykman   
 ```
 
